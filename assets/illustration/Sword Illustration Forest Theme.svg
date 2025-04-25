@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Illustration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412.4 454.86">
+  <circle cx="206.2" cy="229.98" r="206.2" style="fill: #57886c;"/>
+  <circle cx="206.2" cy="229.98" r="122.45" style="fill: #81a684;"/>
+  <path d="M227.08,62v284.36c-13.3.58-22.9-8.81-22.9-8.81-6.86,6.07-13.52,8.44-19.45,8.79l-3.46-283.46L204.61,1.5l22.47,60.5Z" style="fill: #f7f7f7; stroke: #f7f7f7; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;"/>
+  <line x1="204.26" y1="337.55" x2="204.26" y2="75.22" style="fill: none; stroke: #d8d8d8; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;"/>
+  <polyline points="216.04 358.51 217.49 426.37 191.64 426.37 191.64 358.51" style="fill: #466060;"/>
+  <path d="M226.68,423.74l-22.12,31.11-22.9-31.11c3.32,1.01,6.33,1.18,9,.85,7.4-.89,12.17-5.6,13.52-7.09,1.82,2.04,10,10.03,22.5,6.24Z" style="fill: #2a383d;"/>
+  <path d="M262.73,351.34l-15.73,14.85c-1.03-.98-20.62-19.07-42.34-.3-1.38-1.24-6.4-5.37-13.52-7.37-7.7-2.17-17.86-1.83-28.53,7.42l-16.2-13.47,15.42-14.59c1.86,1.66,10.94,9.18,22.98,8.46,5.93-.35,12.59-2.72,19.45-8.79,0,0,9.6,9.4,22.9,8.81,5.92-.25,12.57-2.5,19.45-8.44l16.11,13.41Z" style="fill: #2a383d;"/>
+  <path d="M101.78,257.27c-15.09,0-27.32,12.23-27.32,27.32,0-15.09-12.23-27.32-27.29-27.32,15.06,0,27.29-12.23,27.29-27.29,0,15.06,12.23,27.29,27.32,27.29Z" style="fill: #fff; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;"/>
+  <path d="M129.11,284.58c-8.79,0-15.91,7.13-15.91,15.91,0-8.79-7.13-15.91-15.9-15.91,8.77,0,15.9-7.13,15.9-15.9,0,8.77,7.13,15.9,15.91,15.9Z" style="fill: #fff; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;"/>
+  <path d="M348.82,157.98c-13.2,0-23.91,10.7-23.91,23.91,0-13.2-10.7-23.91-23.88-23.91,13.18,0,23.88-10.7,23.88-23.88,0,13.18,10.7,23.88,23.91,23.88Z" style="fill: #fff; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;"/>
+  <path d="M305.28,185.4c-7.69,0-13.93,6.24-13.93,13.93,0-7.69-6.24-13.93-13.91-13.93,7.68,0,13.91-6.24,13.91-13.91,0,7.68,6.24,13.91,13.93,13.91Z" style="fill: #fff; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;"/>
+  <line x1="190.14" y1="385.97" x2="218.21" y2="377.92" style="fill: #2a383d; stroke: #2a383d; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;"/>
+  <line x1="191.14" y1="408.43" x2="219.76" y2="400.36" style="fill: #456a82; stroke: #2a383d; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3px;"/>
+</svg>

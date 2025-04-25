@@ -1,8 +1,11 @@
 import 'dart:ffi';
 
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:win32/win32.dart';
 import 'package:ffi/ffi.dart';
 import 'package:flutter/material.dart';
+
+import 'package:afkassist/widgets/titlebar.dart';
 
 typedef EnumWindowsProcNative = Int32 Function(IntPtr hWnd, IntPtr lParam);
 typedef EnumWindowsProcDart = int Function(int hWnd, int lParam);
@@ -34,20 +37,50 @@ class _WindowSelectionState extends State<WindowSelection> {
 
   @override
   Widget build(BuildContext context) {
+
+    var dropdownButton = DropdownButton<dynamic>(
+      value: selectedWindow,
+      items: [for (var window in windows) DropdownMenuItem(value: window[1], child: Text(window[0]))],
+      onChanged: (value) => setState(() {
+        selectedWindow = value;
+        Navigator.pushNamed(context, "/afk_actions", arguments: selectedWindow);
+      }),
+
+      autofocus: true,
+
+      borderRadius: BorderRadius.circular(15),
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      menuWidth: 430,
+      underline: SizedBox(),
+      style: TextStyle(fontSize: 16, color: Colors.black),
+
+      icon: SvgPicture.asset("assets\\icons\\tabler--chevron-down.svg"),
+    );
+
+    Widget dropdowntext = Text(
+      "Choose your minecraft window",
+      style: TextStyle(fontSize: 16, fontFamily: "Inter"),
+    );
+
+    var column = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        buildCustomTitleBar(),
+        Expanded(child: Container()),
+        Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: dropdowntext,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(15),
+          child: dropdownButton,
+        ),
+        Expanded(child: Container()),
+      ],
+    );
+
     return Scaffold(
-      body: Row(
-        children: [
-          DropdownButton<dynamic>(
-            value: selectedWindow,
-            items: [for (var window in windows) DropdownMenuItem(value: window[1], child: Text(window[0]))],
-            onChanged: (value) => setState(() {
-              selectedWindow = value;
-              Navigator.pushNamed(context, "/afk_actions", arguments: selectedWindow);
-            }),
-      
-          ),
-        ],
-      ),
+      body: column,
     );
   }
 }

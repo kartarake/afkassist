@@ -1,6 +1,8 @@
 import 'dart:isolate';
 
+import 'package:afkassist/widgets/titlebar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:win32/win32.dart';
 
 const WM_RBUTTONDOWN = 0x0204;
@@ -28,37 +30,80 @@ class _AfkActionsState extends State<AfkActions> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body:Row(children: [
-        buildActionMenu(),
-        if (selectedAction == "Fishing") buildFishingScreen(),
-        if (selectedAction == "Mob Farm") buildMobFarmScreen(),
-      ],)
+      body:Column(
+        children: [
+          buildCustomTitleBar(),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildActionMenu(),
+            Container(height: 290,width: 1, color: Color.fromRGBO(0, 0, 0, 0.1)),
+            if (selectedAction == "Fishing") buildFishingScreen(),
+            if (selectedAction == "Mob Farm") buildMobFarmScreen(),
+          ],),
+        ],
+      )
     );
   }
 
   Widget buildActionMenu() {
-    Text appTitle = Text("AFK Assist");
+    TextButton fishingOption = TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor:("Fishing"== selectedAction)? Color(0xffDEDEDE) : Color.fromARGB(0, 0, 0, 0),
+        fixedSize: Size(120, 35),
+        textStyle: TextStyle(fontSize: 13.33, fontFamily: "Inter", color: Colors.black),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        side: BorderSide(width: 1, color: Color.fromRGBO(0, 0, 0, 0.1)),
+        foregroundColor: Colors.black,
+      ),
 
-    GestureDetector fishingOption = GestureDetector(
-      child: Text("Fishing"),
-      onTap: () => setState(() {
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SvgPicture.asset("assets\\icons\\tabler--fish-hook.svg", height: 16, width: 16),
+          SizedBox(width: 3),
+          Text("AFK Fishing"),
+        ],
+      ),
+
+      onPressed: () => setState(() {
         selectedAction = "Fishing";
       }),
     );
 
-    GestureDetector mobFarmOption = GestureDetector(
-      child: Text("Mob Farm"),
-      onTap: () => setState(() {
+    TextButton mobFarmOption = TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor:("Mob Farm"== selectedAction)? Color(0xffDEDEDE) : Color.fromARGB(0, 0, 0, 0),
+        fixedSize: Size(120, 35),
+        textStyle: TextStyle(fontSize: 13.33, fontFamily: "Inter", color: Colors.black),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        side: BorderSide(width: 1, color: Color.fromRGBO(0, 0, 0, 0.1)),
+        foregroundColor: Colors.black,
+      ),
+
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SvgPicture.asset("assets\\icons\\tabler--sword.svg", height: 16, width: 16),
+          SizedBox(width: 5),
+          Text("Mob Farm"),
+        ],
+      ),
+
+      onPressed: () => setState(() {
         selectedAction = "Mob Farm";
       }),
     );
 
-    return Column(
-      children: [
-        appTitle,
-        fishingOption,
-        mobFarmOption
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        children: [
+          fishingOption,
+          SizedBox(height: 10),
+          mobFarmOption
+        ],
+      ),
     );
   }
 
@@ -87,6 +132,10 @@ class _AfkActionsState extends State<AfkActions> {
     }
 
     TextButton startFishingButton = TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: Color(0xff000000),
+        foregroundColor: Colors.white,
+      ),
       onPressed: () {
         SetForegroundWindow(hwnd);
         startAfkFishing(hwnd);
@@ -98,6 +147,11 @@ class _AfkActionsState extends State<AfkActions> {
     );
 
     TextButton stopFishingButton = TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: Color(0xff000000),
+        foregroundColor: Colors.white,
+      ),
+
       onPressed: () {
         SetForegroundWindow(hwnd);
         stopAfkFishing();
@@ -108,8 +162,22 @@ class _AfkActionsState extends State<AfkActions> {
       child: Text("Stop"),
     );
 
-    return (isFishing)? stopFishingButton : startFishingButton;
+    return SizedBox(
+      width: 329,
+      height: 290,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset("assets\\illustration\\Fishing Rod.svg", width: 150, height: 150),
+            SizedBox(height: 20),
+            (isFishing)? stopFishingButton : startFishingButton,
+          ],
+        ),
+      ),
+    );
   }
+
 
   Widget buildMobFarmScreen() {
     int hwnd = widget.hwnd;
@@ -136,6 +204,11 @@ class _AfkActionsState extends State<AfkActions> {
     }
 
     TextButton startMobFarmingButton = TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: Color(0xff000000),
+        foregroundColor: Colors.white,
+      ),
+      
       onPressed: () {
         SetForegroundWindow(hwnd);
         startAfkMobFarming(hwnd);
@@ -147,6 +220,11 @@ class _AfkActionsState extends State<AfkActions> {
     );
 
     TextButton stopMobFarmingButton = TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: Color(0xff000000),
+        foregroundColor: Colors.white,
+      ),
+
       onPressed: () {
         SetForegroundWindow(hwnd);
         stopAfkMobFarming();
@@ -157,6 +235,19 @@ class _AfkActionsState extends State<AfkActions> {
       child: Text("Stop"),
     );
 
-    return (isMobFarming)? stopMobFarmingButton : startMobFarmingButton;
+    return SizedBox(
+      width: 329,
+      height: 290,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset("assets\\illustration\\Sword Illustration Forest Theme.svg", height: 150, width: 150),
+            SizedBox(height: 20),
+            (isMobFarming)? stopMobFarmingButton : startMobFarmingButton,
+          ],
+        ),
+      ),
+    );
   }
 }
