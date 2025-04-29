@@ -169,7 +169,7 @@ class _AfkActionsState extends State<AfkActions> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SvgPicture.asset("assets\\illustration\\Fishing Rod.svg", width: 150, height: 150),
+            SvgPicture.asset("assets\\illustration\\Fishing.svg", width: 150, height: 150),
             SizedBox(height: 20),
             (isFishing)? stopFishingButton : startFishingButton,
           ],

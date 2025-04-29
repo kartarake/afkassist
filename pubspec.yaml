@@ -30,7 +30,7 @@ flutter:
     - assets\icons\tabler--fish-hook.svg
     - assets\icons\tabler--sword.svg
     - assets\illustration\Sword Illustration Forest Theme.svg
-    - assets\illustration\Fishing Rod.svg
+    - assets\illustration\Fishing.svg
 
 flutter_launcher_icons:
   windows:
